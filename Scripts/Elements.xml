@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Scripts" Url="P3">
+    <File Path="Scripts\P3.Modules.SharePoint.WhatsNew.js" Url="Scripts/P3.Modules.SharePoint.WhatsNew.js" ReplaceContent="TRUE" Type="GhostableInLibrary" />
+    <File Path="Scripts\P3.Modules.SharePoint.WhatsNew.css" Url="Scripts/P3.Modules.SharePoint.WhatsNew.css" ReplaceContent="TRUE" Type="GhostableInLibrary"/>
+  </Module>
+
+  <CustomAction Location="ScriptLink" ScriptSrc="~Site/_layouts/15/mQuery.js" Sequence="997" />
+  <CustomAction Location="ScriptLink" ScriptSrc="~Site/_layouts/15/callout.js" Sequence="998" />
+  <CustomAction Location="ScriptLink" ScriptSrc="~Site/P3/Scripts/P3.Modules.SharePoint.WhatsNew.js" Sequence="999" />
+
+  <CustomAction Id="P3.Modules.Whatsnew.SiteActions"
+    Description="Add whats new item"
+    Title="Add whats new item"
+    GroupId="SiteActions"
+    Location="Microsoft.SharePoint.StandardMenu"
+    RegistrationId="0x0101"
+    RegistrationType="ContentType"
+    Sequence="10">
+    <UrlAction Url="javascript:whatsNewManager.openNewWhatsNewItem();"/>
+  </CustomAction>
+
+
+  
+</Elements>

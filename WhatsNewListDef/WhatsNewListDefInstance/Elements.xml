@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance Title="Whats New" OnQuickLaunch="TRUE" TemplateType="104" Url="Lists/WhatsNew" Description="Use this list to configure whats new information">
+    <Data>
+      <Rows>
+        <Row>
+          <Field Name="Title">Hello World!</Field>
+          <Field Name="Body">Greetings from P3 Whats New!</Field>
+          <Field Name="ElementID">DeltaPlaceHolderPageTitleInTitleArea</Field>
+          <Field Name="Order1">1</Field>
+          <Field Name="Pages">All</Field>
+          <Field Name="Expires">2020-12-30T00:00:00Z</Field>
+        </Row>
+      </Rows>
+    </Data>
+  </ListInstance>
+</Elements>

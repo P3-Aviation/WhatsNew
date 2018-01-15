@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<List xmlns:ows="Microsoft SharePoint" Title="WhatsNewListDef" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/WhatsNewListDef" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+  <MetaData>
+    <ContentTypes>
+
+
+      <ContentType ID="0x01006042f44483234276afc2280a519a9c04" Name="ListFieldsContentType">
+        <FieldRefs>
+
+
+
+
+
+
+          <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" />
+          <FieldRef ID="{7662cd2c-f069-4dba-9e35-082cf976e170}" Name="Body" />
+          <FieldRef ID="{6a09e75b-8d17-4698-94a8-371eda1af1ac}" Name="Expires" />
+          <FieldRef ID="{ec3e6c20-e333-495b-912f-1cd8f693c562}" Name="ElementID" />
+          <FieldRef ID="{d38d793a-776a-45c2-806d-58c64a8c9468}" Name="Order1" />
+          <FieldRef ID="{0e847b5b-72f9-4e2d-9177-32303ad216a4}" Name="Pages" />
+        </FieldRefs>
+      </ContentType>
+      <ContentTypeRef ID="0x0104">
+        <Folder TargetName="Announcement" />
+      </ContentTypeRef>
+      <ContentTypeRef ID="0x0120" />
+    </ContentTypes>
+    <Fields>
+
+
+
+
+
+
+
+
+
+      <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" />
+      <Field ID="{7662cd2c-f069-4dba-9e35-082cf976e170}" Type="Note" RichText="TRUE" RichTextMode="FullHtml" IsolateStyles="TRUE" NumLines="15" Name="Body" DisplayName="$Resources:core,camlid2;" Sortable="FALSE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Body" Required="TRUE"></Field>
+      <Field ID="{6a09e75b-8d17-4698-94a8-371eda1af1ac}" Type="DateTime" Name="Expires" Required="TRUE" DisplayName="$Resources:core,camlid3;" Format="DateOnly" FromBaseType="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Expires"></Field>
+      <Field Name="ElementID" ID="{ec3e6c20-e333-495b-912f-1cd8f693c562}" DisplayName="ElementID" Type="Text" Required="TRUE" />
+      <Field Name="Order1" ID="{d38d793a-776a-45c2-806d-58c64a8c9468}" DisplayName="Order" Type="Number" Required="TRUE" />
+      <Field Name="Pages" ID="{0e847b5b-72f9-4e2d-9177-32303ad216a4}" DisplayName="Pages" FillInChoice="TRUE" Type="MultiChoice" Required="TRUE">
+        <CHOICES>
+          <CHOICE>All</CHOICE>
+        </CHOICES>
+        <Default></Default>
+      </Field>
+    </Fields>
+    <Views>
+
+
+
+      <View BaseViewID="0" FreeForm="TRUE" Type="HTML" MobileView="TRUE" TabularView="FALSE">
+        <Toolbar Type="Standard" />
+        <XslLink>main.xsl</XslLink>
+        <Query>
+          <Where>
+            <Or>
+              <IsNull>
+                <FieldRef Name="Expires" />
+              </IsNull>
+              <Geq>
+                <FieldRef Name="Expires"></FieldRef>
+                <Value Type="DateTime">
+                  <Today></Today>
+                </Value>
+              </Geq>
+            </Or>
+          </Where>
+          <OrderBy>
+
+            <FieldRef Name="Modified" Ascending="FALSE"></FieldRef>
+          </OrderBy>
+        </Query>
+        <ViewFields>
+
+
+
+
+
+          <FieldRef Name="LinkTitleNoMenu" Explicit="TRUE"></FieldRef>
+          <FieldRef Name="Body" Explicit="TRUE"></FieldRef>
+          <FieldRef Name="Author" Explicit="TRUE"></FieldRef>
+          <FieldRef Name="Modified" Explicit="TRUE"></FieldRef>
+          <FieldRef Name="Attachments" Explicit="TRUE"></FieldRef>
+        </ViewFields>
+        <RowLimit>5</RowLimit>
+        <ParameterBindings>
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,NoAnnouncements)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,NoAnnouncementsHowTo)" />
+          <ParameterBinding Name="AddNewAnnouncement" Location="Resource(wss,idHomePageNewAnnounce)" />
+          <ParameterBinding Name="MoreAnnouncements" Location="Resource(wss,MoreAnnouncements)" />
+          <ParameterBinding Name="ByText" Location="Resource(wss,2000)" />
+        </ParameterBindings>
+      </View>
+      <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,camlid4;" DefaultView="TRUE" MobileView="True" MobileDefaultView="True" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/15/images/announce.png?rev=23" Url="AllItems.aspx">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <JSLink>clienttemplates.js</JSLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ParameterBindings>
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" />
+        </ParameterBindings>
+        <ViewFields>
+
+
+          <FieldRef Name="LinkTitle"></FieldRef>
+          <FieldRef Name="Body" />
+          <FieldRef Name="ElementID" />
+          <FieldRef Name="Order1" />
+          <FieldRef Name="Pages" />
+          <FieldRef Name="Modified"></FieldRef>
+        </ViewFields>
+        <Query>
+          <OrderBy>
+
+            <FieldRef Name="Modified" Ascending="FALSE"></FieldRef>
+          </OrderBy>
+        </Query>
+      </View>
+      <View BaseViewID="3" FreeForm="TRUE" Type="HTML" TabularView="FALSE">
+        <Toolbar Type="Standard" />
+        <XslLink>main.xsl</XslLink>
+        <Query>
+          <Where>
+            <Or>
+              <IsNull>
+                <FieldRef Name="Expires" />
+              </IsNull>
+              <Geq>
+                <FieldRef Name="Expires"></FieldRef>
+                <Value Type="DateTime">
+                  <Today></Today>
+                </Value>
+              </Geq>
+            </Or>
+          </Where>
+          <OrderBy>
+
+            <FieldRef Name="Modified" Ascending="FALSE"></FieldRef>
+          </OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" />
+        </ParameterBindings>
+        <ViewFields>
+
+
+
+
+
+          <FieldRef Name="LinkTitleNoMenu" Explicit="TRUE"></FieldRef>
+          <FieldRef Name="Body" Explicit="TRUE"></FieldRef>
+          <FieldRef Name="Author" Explicit="TRUE"></FieldRef>
+          <FieldRef Name="Modified" Explicit="TRUE"></FieldRef>
+          <FieldRef Name="Attachments" Explicit="TRUE"></FieldRef>
+        </ViewFields>
+        <RowLimit>3</RowLimit>
+      </View>
+    </Views>
+    <Forms>
+      <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+    <DefaultDescription>$Resources:onetid10;</DefaultDescription>
+  </MetaData>
+</List>
